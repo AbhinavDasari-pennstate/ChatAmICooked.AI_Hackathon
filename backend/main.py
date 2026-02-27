@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq
 from pydantic import BaseModel
 
-from agents import ingestion, knowledge_map, scorer, stress_test, study_plan
+from agents import ingestion, knowledge_map, relevance_check, scorer, stress_test, study_plan
 
 load_dotenv()
 
@@ -59,6 +59,32 @@ async def analyze(
 
     days_until_exam = max((exam_date - date.today()).days, 1)
 
+    # --- Pre-flight: Relevance Check ---
+    try:
+        rel = await relevance_check.run(groq_client, material, exam_topic)
+    except Exception:
+        rel = {"relevant": True, "confidence": 0, "reason": ""}
+
+    # Hard stop: high-confidence mismatch
+    if not rel["relevant"] and rel["confidence"] >= 80:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "error": "mismatch",
+                "message": f"Your uploaded material doesn't appear to be related to '{exam_topic}'.",
+                "reason": rel["reason"],
+                "suggestion": "Please upload notes, slides, or a textbook chapter that actually covers this exam topic.",
+            },
+        )
+
+    # Soft warning: uncertain relevance — proceed but flag it
+    mismatch_warning = None
+    if not rel["relevant"] and rel["confidence"] < 80:
+        mismatch_warning = {
+            "message": f"Your material may not fully cover '{exam_topic}'. Results could be unreliable.",
+            "reason": rel["reason"],
+        }
+
     # --- Agent 1: Knowledge Map ---
     try:
         km_result = await knowledge_map.run(groq_client, material, exam_topic)
@@ -102,6 +128,7 @@ async def analyze(
         "topics": scored_topics,
         "questions": public_questions,
         "plan": plan_list,
+        "mismatch_warning": mismatch_warning,
     }
 
 
