@@ -76,8 +76,11 @@ async def analyze(
     # --- Agent 3: Confidence Scorer ---
     try:
         sc_result = await scorer.run(groq_client, material, questions_list, days_until_exam)
-        overall_score = sc_result.get("overall_score", 0)
-        scored_topics = sc_result.get("topics", [])
+        overall_score = max(10, min(100, int(sc_result.get("overall_score", 50))))
+        scored_topics = [
+            {**t, "score": max(10, min(100, int(t.get("score", 50))))}
+            for t in sc_result.get("topics", [])
+        ]
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Confidence Scorer Agent error: {e}")
 

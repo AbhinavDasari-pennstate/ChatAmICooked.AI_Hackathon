@@ -4,8 +4,18 @@ from groq import Groq
 
 PROMPT_TEMPLATE = """You are an academic advisor. Given this study material and questions generated from it, assess how well the material prepares the student for each topic. Exam is in {days_until_exam} days.
 
+Scoring rubric (use this scale — never give single-digit scores):
+- 95-100: Excellent coverage, student is very well prepared
+- 85-94: Good coverage, minor gaps only
+- 70-84: Decent coverage, some gaps worth reviewing
+- 50-69: Partial coverage, significant gaps
+- 30-49: Poor coverage, major topics missing
+- 10-29: Very poor coverage, material barely addresses the topic
+
+All scores MUST be integers between 10 and 100. Do NOT return scores below 10.
+
 Return ONLY valid JSON with no extra text or markdown:
-{{ "overall_score": 0, "topics": [{{ "name": "", "score": 0, "gap": "", "priority": "urgent|soon|ok" }}] }}
+{{ "overall_score": 75, "topics": [{{ "name": "", "score": 75, "gap": "", "priority": "urgent|soon|ok" }}] }}
 
 Study material (excerpt):
 {material}
