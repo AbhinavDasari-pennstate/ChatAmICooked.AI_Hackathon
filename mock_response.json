@@ -1,0 +1,18 @@
+{
+  "overall_score": 52,
+  "topics": [
+    { "name": "Thermodynamics", "score": 35, "gap": "Weak on entropy and second law", "priority": "urgent" },
+    { "name": "Kinematics", "score": 70, "gap": "Minor gaps in projectile motion", "priority": "soon" },
+    { "name": "Electromagnetism", "score": 55, "gap": "Unclear on Faraday's law", "priority": "urgent" }
+  ],
+  "questions": [
+    { "topic": "Thermodynamics", "question": "Explain the second law of thermodynamics", "difficulty": "medium" },
+    { "topic": "Kinematics", "question": "A ball is thrown at 45 degrees, find max range", "difficulty": "hard" },
+    { "topic": "Electromagnetism", "question": "State Faraday's law and give an example", "difficulty": "medium" }
+  ],
+  "plan": [
+    { "day": 1, "date": "2026-02-28", "focus": "Thermodynamics", "tasks": ["Review entropy", "Do past paper Q3"], "hours": 2 },
+    { "day": 2, "date": "2026-03-01", "focus": "Electromagnetism", "tasks": ["Reread Faraday's law", "Practice problems"], "hours": 2 },
+    { "day": 3, "date": "2026-03-02", "focus": "Kinematics", "tasks": ["Projectile motion drill"], "hours": 1 }
+  ]
+}
