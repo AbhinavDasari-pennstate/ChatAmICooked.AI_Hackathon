@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import type { AnalysisResult, ChatMessage } from '@/types';
 
-const API_BASE = 'http://localhost:8080';
+const API_BASE = 'http://localhost:8000';
 
 interface ResultsDashboardProps {
   result: AnalysisResult;

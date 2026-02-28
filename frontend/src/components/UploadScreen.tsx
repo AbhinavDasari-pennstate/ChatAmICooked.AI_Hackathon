@@ -7,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import type { AnalysisResult } from '@/types';
 import mockData from '@/mock_response.json';
 
-const API_BASE = 'http://localhost:8080';
+const API_BASE = 'http://localhost:8000';
 const USE_MOCK = false; // flip to true to use mock data
 
 interface UploadScreenProps {
