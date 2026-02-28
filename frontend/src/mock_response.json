@@ -1,0 +1,28 @@
+{
+  "overall_score": 34,
+  "topics": [
+    { "name": "Laws of Thermodynamics", "score": 15, "gap": "Missing coverage of zeroth and third laws", "priority": "urgent" },
+    { "name": "Entropy & Enthalpy", "score": 28, "gap": "Weak on entropy change calculations and Gibbs free energy", "priority": "urgent" },
+    { "name": "Heat Transfer", "score": 55, "gap": "Minor gaps in radiation and combined modes", "priority": "soon" },
+    { "name": "Thermodynamic Cycles", "score": 40, "gap": "Carnot vs Otto vs Diesel cycle differences unclear", "priority": "soon" },
+    { "name": "Ideal Gas Laws", "score": 72, "gap": "Real gas deviations not covered", "priority": "ok" },
+    { "name": "Phase Diagrams", "score": 60, "gap": "Triple point and critical point concepts need review", "priority": "ok" }
+  ],
+  "questions": [
+    { "topic": "Thermodynamic Cycles", "question": "A Carnot engine operates between a hot reservoir at 800K and a cold reservoir at 300K. What is the maximum theoretical efficiency?", "difficulty": "medium" },
+    { "topic": "Entropy & Enthalpy", "question": "Calculate the change in entropy when 2 moles of an ideal gas expand isothermally from 10L to 25L at 298K.", "difficulty": "hard" },
+    { "topic": "Laws of Thermodynamics", "question": "Explain why the second law of thermodynamics implies that no heat engine can be 100% efficient.", "difficulty": "medium" }
+  ],
+  "plan": [
+    { "day": 1, "date": "2026-02-27", "focus": "Laws of Thermodynamics", "tasks": ["Review zeroth and third laws (Ch 1)", "Watch lecture recap on entropy"], "hours": 2 },
+    { "day": 2, "date": "2026-02-28", "focus": "Entropy & Enthalpy", "tasks": ["Entropy change calculations deep dive", "Do 10 practice problems on Gibbs energy"], "hours": 3 },
+    { "day": 3, "date": "2026-03-01", "focus": "Heat Transfer", "tasks": ["Heat Transfer methods", "Conduction/Convection/Radiation notes"], "hours": 2 },
+    { "day": 4, "date": "2026-03-02", "focus": "Thermodynamic Cycles", "tasks": ["Compare Carnot, Otto, Diesel cycles", "Solve cycle efficiency problems"], "hours": 2 },
+    { "day": 5, "date": "2026-03-03", "focus": "Mixed Review", "tasks": ["Timed 30-min mock quiz", "Review all weak areas"], "hours": 2 },
+    { "day": 6, "date": "2026-03-04", "focus": "Ideal Gas Laws", "tasks": ["Real gas deviation models", "Van der Waals equation practice"], "hours": 1 },
+    { "day": 7, "date": "2026-03-05", "focus": "Phase Diagrams", "tasks": ["Triple point and critical point", "Past exam paper (2023)"], "hours": 2 },
+    { "day": 8, "date": "2026-03-06", "focus": "Full Mock Exam", "tasks": ["Full mock exam under timed conditions", "Mark and review answers"], "hours": 3 },
+    { "day": 9, "date": "2026-03-07", "focus": "Weak Spot Revision", "tasks": ["Targeted revision on remaining weak spots"], "hours": 2 },
+    { "day": 10, "date": "2026-03-08", "focus": "Light Review", "tasks": ["Formulae sheet only", "Rest and sleep early"], "hours": 1 }
+  ]
+}
