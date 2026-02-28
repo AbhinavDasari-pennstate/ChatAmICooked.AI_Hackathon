@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import { Button } from '@/components/ui/button';
@@ -76,16 +76,43 @@ export function UploadScreen({ onResult }: UploadScreenProps) {
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col">
       {/* Header */}
-      <header className="pt-12 pb-6 text-center px-4">
-        <h1 className="text-4xl font-black tracking-tight">
-          CHAT<span className="text-orange-400">AmICoOkEd?</span>.AI
+      <header className="pt-12 pb-6 text-center px-4 relative overflow-hidden">
+        {/* Heat haze overlay */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(0deg, rgba(249,115,22,0.07) 0%, transparent 60%)',
+            animation: 'heat-haze 4s ease-in-out infinite',
+            pointerEvents: 'none',
+          }}
+        />
+        {/* Ember particles */}
+        {[
+          { left: '8%',  delay: '0s',   dur: '2.2s', drift: '12px'  },
+          { left: '18%', delay: '0.7s', dur: '1.8s', drift: '-8px'  },
+          { left: '30%', delay: '1.4s', dur: '2.5s', drift: '20px'  },
+          { left: '50%', delay: '0.3s', dur: '1.6s', drift: '-15px' },
+          { left: '65%', delay: '1.1s', dur: '2.0s', drift: '10px'  },
+          { left: '80%', delay: '0.5s', dur: '2.3s', drift: '-18px' },
+          { left: '90%', delay: '1.8s', dur: '1.9s', drift: '14px'  },
+        ].map((e, i) => (
+          <div
+            key={i}
+            className="ember"
+            style={{ left: e.left, bottom: 0, '--delay': e.delay, '--dur': e.dur, '--drift': e.drift } as React.CSSProperties}
+          />
+        ))}
+        <h1 className="text-4xl font-black tracking-tight relative">
+          <span className="gradient-title">ChatAmICooked.AI</span>
+          <span className="flame-flicker ml-2">🔥</span>
         </h1>
-        <p className="mt-2 text-zinc-400 text-lg">"Find out before your professor does."</p>
+        <p className="mt-2 text-zinc-400 text-lg relative">"Find out before your professor does."</p>
       </header>
 
       {/* Main card */}
       <main className="flex-1 flex items-start justify-center px-4 pb-16">
-        <Card className="w-full max-w-xl bg-zinc-900 border-zinc-800 shadow-2xl">
+        <Card className="w-full max-w-xl bg-zinc-900 border-zinc-800 shadow-2xl slide-up">
           <CardContent className="p-8 space-y-6">
 
             {/* Drop zone */}
@@ -174,7 +201,7 @@ export function UploadScreen({ onResult }: UploadScreenProps) {
             <Button
               onClick={handleSubmit}
               disabled={!canSubmit || loading}
-              className="w-full h-14 text-lg font-bold bg-orange-500 hover:bg-orange-400 text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all rounded-xl"
+              className={`w-full h-14 text-lg font-bold bg-orange-500 hover:bg-orange-400 text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all rounded-xl${canSubmit && !loading ? ' glow-btn' : ''}`}
             >
               {loading ? (
                 <span className="flex items-center gap-3">
@@ -182,7 +209,10 @@ export function UploadScreen({ onResult }: UploadScreenProps) {
                   Analyzing your situation...
                 </span>
               ) : (
-                '🔥 Am I Cooked?'
+                <span className="flex items-center gap-2">
+                  <span className="flame-flicker">🔥</span>
+                  Am I Cooked?
+                </span>
               )}
             </Button>
 

@@ -91,8 +91,9 @@ export function ResultsDashboard({ result, examTopic, examDate, onReset }: Resul
       {/* Header */}
       <header className="px-6 py-4 flex items-center justify-between border-b border-zinc-800">
         <div>
-          <h1 className="text-2xl font-black">
-            Chat<span className="text-orange-400">AmICooked</span>.AI
+          <h1 className="text-2xl font-black flex items-center gap-1">
+            <span className="gradient-title">ChatAmICooked.AI</span>
+            <span className="flame-flicker text-xl">🔥</span>
           </h1>
           <p className="text-zinc-500 text-sm">
             {examTopic}
@@ -125,7 +126,7 @@ export function ResultsDashboard({ result, examTopic, examDate, onReset }: Resul
           )}
 
           {/* Score + verdict */}
-          <div className={`rounded-2xl border p-6 flex flex-col sm:flex-row items-center gap-6 ${verdict.bg} ${verdict.border}`}>
+          <div className={`verdict-glow rounded-2xl border p-6 flex flex-col sm:flex-row items-center gap-6 ${verdict.bg} ${verdict.border}`}>
             <div className="w-36 h-36 shrink-0">
               <CircularProgressbar
                 value={result.overall_score}
@@ -139,7 +140,7 @@ export function ResultsDashboard({ result, examTopic, examDate, onReset }: Resul
               />
             </div>
             <div>
-              <div className="text-3xl font-black">{verdict.label}</div>
+              <div className="text-3xl font-black slide-up">{verdict.label}</div>
               <p className="text-zinc-400 mt-1 text-sm max-w-sm">
                 You've covered <strong className="text-white">{result.overall_score}%</strong> of the
                 expected material for your <strong className="text-white">{examTopic}</strong> exam.{' '}
